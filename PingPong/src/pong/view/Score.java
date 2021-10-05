@@ -7,7 +7,7 @@ public class Score {
 	int player1;
 	int player2;
 
-	public Score() {
+	public Score(int GAME_WIDTH , int GAME_HEIGHT) {
 		// TODO Auto-generated constructor stub
 	}
 	
