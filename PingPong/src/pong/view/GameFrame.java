@@ -5,7 +5,9 @@ import javax.swing.JFrame;
 import pong.model.GamePanel;
 
 @SuppressWarnings("serial")
+
 public class GameFrame extends JFrame {
+	
 	 GamePanel panel;
 	
 	public GameFrame() {
