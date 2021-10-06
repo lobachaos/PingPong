@@ -3,9 +3,7 @@ package pong.model;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import pong.view.GamePanel;
-
-public class AL extends KeyAdapter{
+public class PaddleListener extends KeyAdapter{
 
 	public void keyPressed(KeyEvent e) {
 		GamePanel.paddle1.keyPressed(e);

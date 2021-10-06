@@ -1,4 +1,4 @@
-package pong.view;
+package pong.model;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -6,10 +6,6 @@ import java.awt.Image;
 import java.util.Random;
 
 import javax.swing.JPanel;
-
-import pong.model.AL;
-import pong.model.Ball;
-import pong.model.Paddles;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable{
@@ -34,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
 		 newBall();
 		 score = new Score(GAME_WIDTH,GAME_HEIGHT);
 		 setFocusable(true);
-		 this.addKeyListener(new AL());
+		 this.addKeyListener(new PaddleListener());
 		 setPreferredSize(SCREEN_SIZE);
 		 gameThread = new Thread(this);
 		 gameThread.start();
@@ -58,12 +54,26 @@ public class GamePanel extends JPanel implements Runnable{
 	 }
 
 	private void checkCollision() {
-		// TODO Auto-generated method stub
+		// para a raquete quando chegar nas bordas
+		
+		if(paddle1.y <= 0) {
+			paddle1.y = 0;
+		}else if (paddle1.y > (GAME_HEIGHT - PADDLES_HEIGHT)) {
+			paddle1.y = (GAME_HEIGHT - PADDLES_HEIGHT);
+		}
+		else if(paddle2.y <= 0) {
+			paddle2.y = 0;
+		}else if (paddle2.y > (GAME_HEIGHT - PADDLES_HEIGHT)) {
+			paddle2.y = (GAME_HEIGHT - PADDLES_HEIGHT);
+		}
+		
 		
 	}
 
 	private void move() {
-		// TODO Auto-generated method stub
+		paddle1.move();
+		paddle2.move();
+		//ball.move();
 		
 	}
 	
@@ -71,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
 	}
 	public void run() {
+		//  Start do Game
 		long lastTime = System.nanoTime();
 		double amoutOfTicks = 60.0;
 		double ns = 1000000000 / amoutOfTicks;
