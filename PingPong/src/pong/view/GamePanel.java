@@ -24,8 +24,8 @@ public class GamePanel extends JPanel implements Runnable{
 	Image image;
 	Graphics graphics;
 	Random random;
-	Paddles paddle1;
-	Paddles paddle2;
+	public static Paddles paddle1;
+	public static Paddles paddle2;
 	Ball ball;
 	Score score;
 	
@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable{
 		 newBall();
 		 score = new Score(GAME_WIDTH,GAME_HEIGHT);
 		 setFocusable(true);
-		 addKeyListener(new AL());
+		 this.addKeyListener(new AL());
 		 setPreferredSize(SCREEN_SIZE);
 		 gameThread = new Thread(this);
 		 gameThread.start();
@@ -91,4 +91,5 @@ public class GamePanel extends JPanel implements Runnable{
 		
 	}
 }
+
 
